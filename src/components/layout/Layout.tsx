@@ -20,6 +20,7 @@ import {
 import { cn } from '../../lib/utils';
 import { useState } from 'react';
 import { Footer } from './Footer';
+import { AdContainer } from './AdContainer';
 
 interface LayoutProps {
   children: ReactNode;
@@ -49,6 +50,7 @@ export function Layout({ children }: LayoutProps) {
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col md:flex-row font-sans text-slate-800">
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-emerald-600 text-white px-4 py-2 z-50 rounded-md font-medium outline-none ring-2 ring-offset-2 ring-emerald-600">Skip to main content</a>
       {/* Mobile Top Bar */}
       <div className="md:hidden flex items-center justify-between p-4 bg-white border-b border-slate-200 shrink-0 sticky top-0 z-30">
         <div className="flex items-center gap-2">
@@ -59,7 +61,7 @@ export function Layout({ children }: LayoutProps) {
         </div>
         <button 
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="flex items-center justify-center p-3 -mr-2 min-w-[44px] min-h-[44px] text-slate-600 hover:text-slate-900"
+          className="flex items-center justify-center p-3 -mr-2 min-w-[48px] min-h-[48px] text-slate-600 hover:text-slate-900"
           aria-label="Toggle Menu"
         >
           {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -89,7 +91,7 @@ export function Layout({ children }: LayoutProps) {
                   to={item.path}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={({ isActive }) => cn(
-                    "flex items-center gap-3 px-3 py-3 md:py-2 text-sm font-medium rounded-md transition-colors min-h-[44px] md:min-h-0",
+                    "flex items-center gap-3 px-3 py-3 md:py-2 text-sm font-medium rounded-md transition-colors min-h-[48px] md:min-h-0",
                     isActive 
                       ? "bg-emerald-50 text-emerald-700" 
                       : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
@@ -111,7 +113,7 @@ export function Layout({ children }: LayoutProps) {
                   to={item.path}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={({ isActive }) => cn(
-                    "flex items-center gap-3 px-3 py-3 md:py-2 text-sm font-medium rounded-md transition-colors min-h-[44px] md:min-h-0",
+                    "flex items-center gap-3 px-3 py-3 md:py-2 text-sm font-medium rounded-md transition-colors min-h-[48px] md:min-h-0",
                     isActive 
                       ? "bg-slate-100 text-slate-900" 
                       : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
@@ -122,6 +124,10 @@ export function Layout({ children }: LayoutProps) {
                 </NavLink>
               ))}
             </nav>
+          </div>
+          
+          <div className="px-2 pb-4">
+            <AdContainer adSlot="SIDEBAR_AD_SLOT" className="min-h-[250px] w-full border-none shadow-sm rounded-lg overflow-hidden my-0" />
           </div>
         </div>
       </div>
@@ -136,8 +142,9 @@ export function Layout({ children }: LayoutProps) {
           />
         )}
         
-        <main className="flex-1 overflow-y-auto p-4 md:p-8">
+        <main id="main-content" className="flex-1 overflow-y-auto p-4 md:p-8 outline-none" tabIndex={-1}>
           <div className="max-w-6xl mx-auto">
+            <AdContainer adSlot="HEADER_AD_SLOT" className="mt-0 mb-8" />
             {children}
           </div>
         </main>

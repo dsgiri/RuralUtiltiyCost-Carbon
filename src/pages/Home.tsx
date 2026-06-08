@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Leaf, Info, Heart } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { cn } from '../lib/utils';
+import { AdContainer } from '../components/layout/AdContainer';
 
 export function Home() {
   useEffect(() => {
@@ -21,6 +22,11 @@ export function Home() {
   const toggleFavorite = (id: string, e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
+    
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'click', { element: 'favorite_button_' + id });
+    }
+
     let next: string[];
     if (favorites.includes(id)) {
       next = favorites.filter(fav => fav !== id);
@@ -29,6 +35,12 @@ export function Home() {
     }
     setFavorites(next);
     localStorage.setItem('ruc-carbon-favorites', JSON.stringify(next));
+  };
+
+  const handleToolClick = (id: string) => {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'click', { element: 'tool_card_' + id });
+    }
   };
 
   return (
@@ -54,6 +66,8 @@ export function Home() {
         </div>
       </section>
 
+      <AdContainer adSlot="IN_CONTENT_AD_SLOT" />
+
       {/* Tools Grid */}
       <section className="space-y-6">
         <div className="flex items-center justify-between">
@@ -67,6 +81,7 @@ export function Home() {
               <Link 
                 key={tool.id} 
                 to={tool.path}
+                onClick={() => handleToolClick(tool.id)}
                 className="group flex flex-col bg-white border border-slate-200 rounded-xl p-5 hover:border-emerald-300 hover:shadow-md transition-all duration-200 relative overflow-hidden"
               >
                 <div className="flex items-start justify-between mb-4">

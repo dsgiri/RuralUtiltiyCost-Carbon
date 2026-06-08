@@ -1,8 +1,12 @@
 import { Link } from 'react-router-dom';
+import { AdContainer } from './AdContainer';
 
 export function Footer() {
   return (
     <footer className="border-t border-slate-200 bg-white py-6 px-4 md:px-8 shrink-0">
+      <div className="max-w-6xl mx-auto mb-8">
+        <AdContainer adSlot="FOOTER_AD_SLOT" className="min-h-[90px] border-none shadow-sm rounded-lg overflow-hidden my-0" />
+      </div>
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
         <div className="flex flex-col items-center md:items-start">
           <p className="font-medium text-slate-700">Carbon &bull; Rural Utility Cost</p>
