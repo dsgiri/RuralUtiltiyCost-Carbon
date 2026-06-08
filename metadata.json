@@ -1,0 +1,6 @@
+{
+  "name": "Carbon",
+  "description": "Farm carbon accounting and low-emissions decision hub for the Rural Utility Cost ecosystem.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
