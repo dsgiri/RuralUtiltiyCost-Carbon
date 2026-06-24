@@ -21,7 +21,7 @@ export function CookieBanner() {
     <div className="fixed bottom-0 inset-x-0 pb-2 sm:pb-5 px-2 sm:px-5 z-50 animate-in slide-in-from-bottom-5">
       <div className="p-4 rounded-xl bg-slate-900 border border-slate-700 shadow-xl max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="text-slate-300 text-sm">
-          We use cookies and third-party tools to improve user experience, analyze site traffic, and serve advertisements. By continuing to use our site, you consent to our use of cookies in accordance with our Privacy Policy.
+          We use cookies and third-party tools to improve user experience, analyze site traffic, and serve advertisements. By continuing to use our site, you consent to our use of cookies in accordance with our <a href="https://www.ruralutilitycost.com/privacy-policy" target="_blank" rel="noreferrer" className="underline text-emerald-400 hover:text-emerald-300">Privacy Policy</a>.
         </div>
         <div className="flex shrink-0">
           <button 

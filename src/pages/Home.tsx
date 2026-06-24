@@ -1,9 +1,8 @@
 import { TOOLS } from '../data/tools';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Leaf, Info, Heart } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { cn } from '../lib/utils';
-import { AdContainer } from '../components/layout/AdContainer';
 
 export function Home() {
   useEffect(() => {
@@ -65,8 +64,6 @@ export function Home() {
           </div>
         </div>
       </section>
-
-      <AdContainer adSlot="IN_CONTENT_AD_SLOT" />
 
       {/* Tools Grid */}
       <section className="space-y-6">

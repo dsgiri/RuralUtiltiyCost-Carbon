@@ -13,7 +13,7 @@ import { Benchmark } from './pages/Benchmark';
 import { WhatIf } from './pages/WhatIf';
 import { Mitigation } from './pages/Mitigation';
 import { Favorites } from './pages/Favorites';
-import { About, Contact, Legal, License } from './pages/SharedPages';
+import { About } from './pages/SharedPages';
 import { NotFound } from './pages/NotFound';
 import { CookieBanner } from './components/layout/CookieBanner';
 
@@ -35,11 +35,6 @@ export default function App() {
           <Route path="/favorites" element={<Favorites />} />
           
           <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/legal" element={<Legal />} />
-          <Route path="/license" element={<License />} />
-          <Route path="/github" element={<div className="text-center p-12 text-slate-500">Redirecting to GitHub...</div>} />
-          
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>

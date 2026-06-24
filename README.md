@@ -1,20 +1,22 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Carbon | Rural Utility Cost
 
-# Run and deploy your AI Studio app
+Farm carbon accounting, emissions benchmarking, and reduction-planning hub for rural operations.
 
-This contains everything you need to run your app locally.
+## Overview
+This application is a subdomain inside the Rural Utility Cost master ecosystem (`carbon.ruralutilitycost.com`). It helps users estimate greenhouse gas emissions, carbon footprints, sequestration potential, carbon intensity, and low-carbon scenario outcomes across farms, enterprises, and production systems.
 
-View your app in AI Studio: https://ai.studio/apps/edf4a031-2c48-4c4d-9344-ee550be4501a
+## Features
+- **Whole-Farm Carbon Footprint**: Estimate complete GHG emissions.
+- **Enterprise Emissions Calculator**: Break down carbon impact by specific enterprises.
+- **Soil Carbon & Sequestration**: Model soil carbon potential.
+- **Benchmark Comparison**: Compare carbon intensity against regional targets.
+- **What-If Reduction Scenarios**: Test practice changes.
+- **Mitigation Planner**: Identify top opportunities for emissions reduction.
 
-## Run Locally
-
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Tech Stack
+- React 19
+- TypeScript
+- Vite
+- Tailwind CSS v4
+- Recharts
+- React Router DOM

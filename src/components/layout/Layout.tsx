@@ -20,7 +20,6 @@ import {
 import { cn } from '../../lib/utils';
 import { useState } from 'react';
 import { Footer } from './Footer';
-import { AdContainer } from './AdContainer';
 
 interface LayoutProps {
   children: ReactNode;
@@ -39,10 +38,10 @@ const mainNavItems = [
 
 const sharedNavItems = [
   { name: 'About', path: '/about', icon: Info },
-  { name: 'Contact', path: '/contact', icon: Phone },
-  { name: 'Legal', path: '/legal', icon: ShieldAlert },
-  { name: 'License', path: '/license', icon: Scale },
-  { name: 'GitHub', path: '/github', icon: Github },
+  { name: 'Contact', href: 'https://www.ruralutilitycost.com/contact', icon: Phone },
+  { name: 'Legal', href: 'https://www.ruralutilitycost.com/terms-of-use', icon: ShieldAlert },
+  { name: 'License', href: 'https://www.ruralutilitycost.com/disclaimer', icon: Scale },
+  { name: 'GitHub', href: 'https://github.com/dsgiri/ruralutilitycost-carbon', icon: Github },
 ];
 
 export function Layout({ children }: LayoutProps) {
@@ -108,26 +107,35 @@ export function Layout({ children }: LayoutProps) {
             <h3 className="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Shared Ecosystem</h3>
             <nav className="space-y-1">
               {sharedNavItems.map((item) => (
-                <NavLink
-                  key={item.path}
-                  to={item.path}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={({ isActive }) => cn(
-                    "flex items-center gap-3 px-3 py-3 md:py-2 text-sm font-medium rounded-md transition-colors min-h-[48px] md:min-h-0",
-                    isActive 
-                      ? "bg-slate-100 text-slate-900" 
-                      : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
-                  )}
-                >
-                  <item.icon className="h-4 w-4 shrink-0" />
-                  {item.name}
-                </NavLink>
+                item.href ? (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-3 px-3 py-3 md:py-2 text-sm font-medium rounded-md transition-colors min-h-[48px] md:min-h-0 text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                  >
+                    <item.icon className="h-4 w-4 shrink-0" />
+                    {item.name}
+                  </a>
+                ) : (
+                  <NavLink
+                    key={item.path}
+                    to={item.path!}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={({ isActive }) => cn(
+                      "flex items-center gap-3 px-3 py-3 md:py-2 text-sm font-medium rounded-md transition-colors min-h-[48px] md:min-h-0",
+                      isActive 
+                        ? "bg-slate-100 text-slate-900" 
+                        : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                    )}
+                  >
+                    <item.icon className="h-4 w-4 shrink-0" />
+                    {item.name}
+                  </NavLink>
+                )
               ))}
             </nav>
-          </div>
-          
-          <div className="px-2 pb-4">
-            <AdContainer adSlot="SIDEBAR_AD_SLOT" className="min-h-[250px] w-full border-none shadow-sm rounded-lg overflow-hidden my-0" />
           </div>
         </div>
       </div>
@@ -144,7 +152,6 @@ export function Layout({ children }: LayoutProps) {
         
         <main id="main-content" className="flex-1 overflow-y-auto p-4 md:p-8 outline-none" tabIndex={-1}>
           <div className="max-w-6xl mx-auto">
-            <AdContainer adSlot="HEADER_AD_SLOT" className="mt-0 mb-8" />
             {children}
           </div>
         </main>

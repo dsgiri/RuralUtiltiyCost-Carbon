@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TOOLS } from '../data/tools';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Heart } from 'lucide-react';

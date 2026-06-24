@@ -1,5 +1,5 @@
 import { Info, ShieldAlert } from 'lucide-react';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 export function SharedPage({ title, children }: { title: string, children: React.ReactNode }) {
   useEffect(() => {
@@ -45,55 +45,8 @@ export function About() {
       </ul>
       
       <p className="mt-8 text-sm italic text-slate-500">
-        Please refer to our Legal page for important context regarding estimations and methodology.
+        Please refer to our <a href="https://www.ruralutilitycost.com/terms-of-use" target="_blank" rel="noreferrer" className="underline hover:text-slate-700">Legal</a> page for important context regarding estimations and methodology.
       </p>
     </SharedPage>
   );
-}
-
-export function Legal() {
-  return (
-    <SharedPage title="Legal & Disclaimer">
-      <div className="flex items-start gap-4 p-4 bg-rose-50 text-rose-800 rounded-lg mb-8">
-        <ShieldAlert className="w-6 h-6 shrink-0 mt-0.5" />
-        <div>
-          <p className="font-semibold mb-1">Informational Purposes Only</p>
-          <p className="text-sm text-rose-700">All carbon estimates provided by this application are strictly for informational and planning purposes.</p>
-        </div>
-      </div>
-
-      <div className="space-y-4">
-        <p>
-          <strong>Methodology Variance:</strong> Methods, emission factors, and sequestration assumptions can vary widely by specific tool, region, and scientific standard. 
-          The outputs generated here provide a generalized estimate based on standard industry logic and should not be treated as exact scientific measurements.
-        </p>
-        <p>
-          <strong>No Professional Advice:</strong> This application does not replace scientific, regulatory, legal, accounting, or financial advice. Users are strongly advised to verify all critical reporting, planning, or market-participation decisions independently with qualified professionals.
-        </p>
-        <p>
-          <strong>Certification Standards:</strong> Outputs from the Carbon app are not guaranteed to satisfy any particular standard, protocol, or certification (e.g., ISO, Verra, CAR) unless explicitly configured and reviewed by an accredited third-party auditor.
-        </p>
-        <p>
-          By using this tool within the Rural Utility Cost ecosystem, you acknowledge that all data, estimates, and theoretical scenarios are provided "as-is" without warranty of any kind.
-        </p>
-      </div>
-    </SharedPage>
-  );
-}
-
-// Simple placeholders for the rest
-export function Contact() {
-  return (
-    <SharedPage title="Contact Us">
-      <p>For inquiries regarding the Carbon accounting tools or the broader Rural Utility Cost ecosystem, please reach out to the master site support.</p>
-    </SharedPage>
-  )
-}
-
-export function License() {
-  return (
-    <SharedPage title="License">
-      <p>This software is provided under the standard Rural Utility Cost ecosystem licensing terms.</p>
-    </SharedPage>
-  )
 }
