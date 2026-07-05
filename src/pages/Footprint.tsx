@@ -187,6 +187,38 @@ export function Footprint() {
 
         </div>
       </div>
+
+      {/* Logic & FAQs & Disclaimer */}
+      <div className="mt-12 space-y-8">
+        <section className="bg-slate-50 p-6 rounded-xl border border-slate-200">
+          <h3 className="text-lg font-semibold text-slate-900 mb-4">Logic & Formulas</h3>
+          <ul className="list-disc pl-5 space-y-2 text-sm text-slate-700">
+            <li><strong>Electricity:</strong> 0.4 kg CO2e per kWh (Average grid emission factor).</li>
+            <li><strong>Diesel:</strong> 10.2 kg CO2e per gallon.</li>
+            <li><strong>Synthetic Fertilizer:</strong> 3,000 kg CO2e per ton (accounts for manufacturing and N2O emissions from application).</li>
+            <li><strong>Livestock:</strong> 2,500 kg CO2e per head (enteric fermentation and manure management).</li>
+            <li><strong>Carbon Intensity:</strong> Total emissions (tCO2e) divided by farm size (acres).</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3 className="text-lg font-semibold text-slate-900 mb-4">Frequently Asked Questions</h3>
+          <div className="space-y-4 text-sm text-slate-700">
+            <details className="group border border-slate-200 rounded-lg p-4 cursor-pointer bg-white">
+              <summary className="font-medium">What is included in this footprint?</summary>
+              <p className="mt-2 text-slate-600">This calculator estimates Scope 1 (direct) and Scope 2 (indirect energy) emissions from core operational activities including fuel, electricity, fertilizer, and livestock.</p>
+            </details>
+            <details className="group border border-slate-200 rounded-lg p-4 cursor-pointer bg-white">
+              <summary className="font-medium">How accurate are these estimates?</summary>
+              <p className="mt-2 text-slate-600">The tool uses generalized industry emission factors for planning purposes. For regulatory or market reporting, exact local factors and a formal GHG protocol assessment are required.</p>
+            </details>
+          </div>
+        </section>
+
+        <section className="text-xs text-slate-500 border-t border-slate-200 pt-6">
+          <p><strong>Disclaimer:</strong> All calculations are for informational and planning purposes only and do not replace formal scientific, regulatory, or financial accounting.</p>
+        </section>
+      </div>
     </ToolLayout>
   )
 }

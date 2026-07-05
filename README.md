@@ -1,9 +1,9 @@
-# Carbon | Rural Utility Cost
+# Carbon | Rural Ops Tools
 
 Farm carbon accounting, emissions benchmarking, and reduction-planning hub for rural operations.
 
 ## Overview
-This application is a subdomain inside the Rural Utility Cost master ecosystem (`carbon.ruralutilitycost.com`). It helps users estimate greenhouse gas emissions, carbon footprints, sequestration potential, carbon intensity, and low-carbon scenario outcomes across farms, enterprises, and production systems.
+This application is a subdomain inside the Rural Ops Tools master ecosystem (`carbon.ruralopstools.com`). It helps users estimate greenhouse gas emissions, carbon footprints, sequestration potential, carbon intensity, and low-carbon scenario outcomes across farms, enterprises, and production systems.
 
 ## Features
 - **Whole-Farm Carbon Footprint**: Estimate complete GHG emissions.

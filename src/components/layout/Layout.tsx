@@ -1,4 +1,4 @@
-import { type ReactNode } from 'react';
+import { type ReactNode, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { 
   Leaf, 
@@ -15,10 +15,11 @@ import {
   Scale, 
   Github,
   Menu,
-  X
+  X,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
-import { useState } from 'react';
 import { Footer } from './Footer';
 
 interface LayoutProps {
@@ -38,14 +39,15 @@ const mainNavItems = [
 
 const sharedNavItems = [
   { name: 'About', path: '/about', icon: Info },
-  { name: 'Contact', href: 'https://www.ruralutilitycost.com/contact', icon: Phone },
-  { name: 'Legal', href: 'https://www.ruralutilitycost.com/terms-of-use', icon: ShieldAlert },
-  { name: 'License', href: 'https://www.ruralutilitycost.com/disclaimer', icon: Scale },
-  { name: 'GitHub', href: 'https://github.com/dsgiri/ruralutilitycost-carbon', icon: Github },
+  { name: 'Contact', href: 'https://www.ruralopstools.com/contact', icon: Phone },
+  { name: 'Legal', href: 'https://www.ruralopstools.com/terms-of-use', icon: ShieldAlert },
+  { name: 'License', href: 'https://www.ruralopstools.com/disclaimer', icon: Scale },
+  { name: 'GitHub', href: 'https://github.com/dsgiri/ruralopstools-carbon', icon: Github },
 ];
 
 export function Layout({ children }: LayoutProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDesktopMenuCollapsed, setIsDesktopMenuCollapsed] = useState(false);
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col md:flex-row font-sans text-slate-800">
@@ -53,7 +55,7 @@ export function Layout({ children }: LayoutProps) {
       {/* Mobile Top Bar */}
       <div className="md:hidden flex items-center justify-between p-4 bg-white border-b border-slate-200 shrink-0 sticky top-0 z-30">
         <div className="flex items-center gap-2">
-          <Leaf className="h-6 w-6 text-emerald-600" />
+          <Leaf className="h-6 w-6 text-emerald-600 shrink-0" />
           <span className="font-semibold text-lg text-slate-900 tracking-tight">
             Carbon <span className="text-slate-400 font-normal">| RUC</span>
           </span>
@@ -69,20 +71,21 @@ export function Layout({ children }: LayoutProps) {
 
       {/* Sidebar Navigation */}
       <div className={cn(
-        "fixed md:static inset-y-0 left-0 w-64 bg-white border-r border-slate-200 z-20 transform transition-transform duration-200 ease-in-out md:translate-x-0 flex flex-col h-full",
-        isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+        "fixed md:static inset-y-0 left-0 bg-white border-r border-slate-200 z-40 transform transition-all duration-300 ease-in-out flex flex-col h-full overflow-hidden",
+        isMobileMenuOpen ? "translate-x-0 w-64" : "-translate-x-full md:translate-x-0",
+        !isMobileMenuOpen && (isDesktopMenuCollapsed ? "md:w-16 w-64" : "w-64")
       )}>
-        <div className="hidden md:flex p-6 items-center gap-2 shrink-0 border-b border-slate-100">
-          <Leaf className="h-7 w-7 text-emerald-600" />
-          <div className="flex flex-col">
-            <span className="font-semibold text-xl text-slate-900 tracking-tight leading-none">Carbon</span>
-            <span className="text-[10px] text-slate-500 uppercase font-medium mt-1 tracking-wider">Rural Utility Cost</span>
+        <div className={cn("hidden md:flex p-6 items-center shrink-0 border-b border-slate-100", isDesktopMenuCollapsed ? "justify-center px-0" : "gap-2")}>
+          <Leaf className="h-7 w-7 text-emerald-600 shrink-0" />
+          <div className={cn("flex flex-col transition-all duration-300", isDesktopMenuCollapsed ? "hidden" : "flex")}>
+            <span className="font-semibold text-xl text-slate-900 tracking-tight leading-none whitespace-nowrap">Carbon</span>
+            <span className="text-[10px] text-slate-500 uppercase font-medium mt-1 tracking-wider whitespace-nowrap">Rural Ops Tools</span>
           </div>
         </div>
 
-        <div className="flex-1 overflow-y-auto py-4 px-3 space-y-8">
+        <div className="flex-1 overflow-y-auto py-4 px-3 space-y-8 no-scrollbar">
           <div>
-            <h3 className="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Tools</h3>
+            <h3 className={cn("px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2", isDesktopMenuCollapsed ? "md:hidden" : "block")}>Tools</h3>
             <nav className="space-y-1">
               {mainNavItems.map((item) => (
                 <NavLink
@@ -90,21 +93,23 @@ export function Layout({ children }: LayoutProps) {
                   to={item.path}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={({ isActive }) => cn(
-                    "flex items-center gap-3 px-3 py-3 md:py-2 text-sm font-medium rounded-md transition-colors min-h-[48px] md:min-h-0",
+                    "flex items-center gap-3 px-3 py-3 md:py-2 text-sm font-medium rounded-md transition-colors min-h-[48px] md:min-h-0 relative group",
+                    isDesktopMenuCollapsed ? "md:justify-center md:px-0" : "",
                     isActive 
                       ? "bg-emerald-50 text-emerald-700" 
                       : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
                   )}
+                  title={isDesktopMenuCollapsed ? item.name : undefined}
                 >
-                  <item.icon className="h-4 w-4 shrink-0" />
-                  {item.name}
+                  <item.icon className="h-5 w-5 shrink-0" />
+                  <span className={cn("whitespace-nowrap transition-all duration-300", isDesktopMenuCollapsed ? "md:hidden" : "block")}>{item.name}</span>
                 </NavLink>
               ))}
             </nav>
           </div>
 
           <div>
-            <h3 className="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Shared Ecosystem</h3>
+            <h3 className={cn("px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2", isDesktopMenuCollapsed ? "md:hidden" : "block")}>Shared Ecosystem</h3>
             <nav className="space-y-1">
               {sharedNavItems.map((item) => (
                 item.href ? (
@@ -113,10 +118,14 @@ export function Layout({ children }: LayoutProps) {
                     href={item.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-3 px-3 py-3 md:py-2 text-sm font-medium rounded-md transition-colors min-h-[48px] md:min-h-0 text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                    className={cn(
+                      "flex items-center gap-3 px-3 py-3 md:py-2 text-sm font-medium rounded-md transition-colors min-h-[48px] md:min-h-0 text-slate-600 hover:bg-slate-50 hover:text-slate-900",
+                      isDesktopMenuCollapsed ? "md:justify-center md:px-0" : ""
+                    )}
+                    title={isDesktopMenuCollapsed ? item.name : undefined}
                   >
-                    <item.icon className="h-4 w-4 shrink-0" />
-                    {item.name}
+                    <item.icon className="h-5 w-5 shrink-0" />
+                    <span className={cn("whitespace-nowrap transition-all duration-300", isDesktopMenuCollapsed ? "md:hidden" : "block")}>{item.name}</span>
                   </a>
                 ) : (
                   <NavLink
@@ -125,18 +134,41 @@ export function Layout({ children }: LayoutProps) {
                     onClick={() => setIsMobileMenuOpen(false)}
                     className={({ isActive }) => cn(
                       "flex items-center gap-3 px-3 py-3 md:py-2 text-sm font-medium rounded-md transition-colors min-h-[48px] md:min-h-0",
+                      isDesktopMenuCollapsed ? "md:justify-center md:px-0" : "",
                       isActive 
                         ? "bg-slate-100 text-slate-900" 
                         : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
                     )}
+                    title={isDesktopMenuCollapsed ? item.name : undefined}
                   >
-                    <item.icon className="h-4 w-4 shrink-0" />
-                    {item.name}
+                    <item.icon className="h-5 w-5 shrink-0" />
+                    <span className={cn("whitespace-nowrap transition-all duration-300", isDesktopMenuCollapsed ? "md:hidden" : "block")}>{item.name}</span>
                   </NavLink>
                 )
               ))}
             </nav>
           </div>
+        </div>
+
+        {/* Desktop Collapse Toggle */}
+        <div className="hidden md:flex p-3 border-t border-slate-200 shrink-0">
+          <button
+            onClick={() => setIsDesktopMenuCollapsed(!isDesktopMenuCollapsed)}
+            className={cn(
+              "flex items-center p-2 text-slate-500 hover:text-slate-900 hover:bg-slate-100 rounded-md transition-colors w-full",
+              isDesktopMenuCollapsed ? "justify-center" : "justify-start gap-2"
+            )}
+            aria-label={isDesktopMenuCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+          >
+            {isDesktopMenuCollapsed ? (
+              <ChevronRight className="h-5 w-5 shrink-0" />
+            ) : (
+              <>
+                <ChevronLeft className="h-5 w-5 shrink-0" />
+                <span className="text-sm font-medium whitespace-nowrap">Collapse</span>
+              </>
+            )}
+          </button>
         </div>
       </div>
 
@@ -145,7 +177,7 @@ export function Layout({ children }: LayoutProps) {
         {/* Overlay for mobile */}
         {isMobileMenuOpen && (
           <div 
-            className="md:hidden fixed inset-0 bg-slate-900/20 z-10" 
+            className="md:hidden fixed inset-0 bg-slate-900/20 z-30" 
             onClick={() => setIsMobileMenuOpen(false)}
           />
         )}
@@ -161,3 +193,4 @@ export function Layout({ children }: LayoutProps) {
     </div>
   );
 }
+

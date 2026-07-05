@@ -6,7 +6,7 @@ import { cn } from '../lib/utils';
 
 export function Home() {
   useEffect(() => {
-    document.title = "Carbon Dashboard | Rural Utility Cost";
+    document.title = "Carbon Dashboard | Rural Ops Tools";
   }, []);
 
   const [favorites, setFavorites] = useState<string[]>(() => {
@@ -60,7 +60,7 @@ export function Home() {
           </p>
           <div className="pt-2 flex items-center gap-2 text-sm text-slate-500">
             <Info className="w-4 h-4 shrink-0" />
-            <span>Part of the Rural Utility Cost planning ecosystem.</span>
+            <span>Part of the Rural Ops Tools planning ecosystem.</span>
           </div>
         </div>
       </section>

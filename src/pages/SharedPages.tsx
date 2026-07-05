@@ -22,8 +22,8 @@ export function About() {
       <div className="flex items-start gap-4 p-4 bg-emerald-50 text-emerald-800 rounded-lg mb-8">
         <Info className="w-6 h-6 shrink-0 mt-0.5" />
         <div>
-          <p className="font-semibold mb-1">Rural Utility Cost Ecosystem</p>
-          <p className="text-sm text-emerald-700">Carbon is the farm carbon accounting and low-emissions decision hub for the Rural Utility Cost master ecosystem.</p>
+          <p className="font-semibold mb-1">Rural Ops Tools Ecosystem</p>
+          <p className="text-sm text-emerald-700">Carbon is the farm carbon accounting and low-emissions decision hub for the Rural Ops Tools master ecosystem.</p>
         </div>
       </div>
       
@@ -45,7 +45,7 @@ export function About() {
       </ul>
       
       <p className="mt-8 text-sm italic text-slate-500">
-        Please refer to our <a href="https://www.ruralutilitycost.com/terms-of-use" target="_blank" rel="noreferrer" className="underline hover:text-slate-700">Legal</a> page for important context regarding estimations and methodology.
+        Please refer to our <a href="https://www.ruralopstools.com/terms-of-use" target="_blank" rel="noreferrer" className="underline hover:text-slate-700">Legal</a> page for important context regarding estimations and methodology.
       </p>
     </SharedPage>
   );

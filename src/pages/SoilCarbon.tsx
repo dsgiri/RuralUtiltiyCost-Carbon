@@ -114,6 +114,36 @@ export function SoilCarbon() {
         </div>
 
       </div>
+
+      {/* Logic & FAQs & Disclaimer */}
+      <div className="mt-12 space-y-8">
+        <section className="bg-slate-50 p-6 rounded-xl border border-slate-200">
+          <h3 className="text-lg font-semibold text-slate-900 mb-4">Logic & Formulas</h3>
+          <ul className="list-disc pl-5 space-y-2 text-sm text-slate-700">
+            <li><strong>Carbon Stock (Tonnes C):</strong> 1% SOC in the top 15cm is roughly equivalent to 10 tonnes of Carbon per acre (simplified bulk density assumption).</li>
+            <li><strong>CO2e Conversion:</strong> 1 tonne of Carbon = 3.67 tonnes of CO2 equivalent (CO2e).</li>
+            <li><strong>Total Sequestration:</strong> (Target SOC - Current SOC) × 10 tC/acre × 3.67 CO2e/tC × Acres.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3 className="text-lg font-semibold text-slate-900 mb-4">Frequently Asked Questions</h3>
+          <div className="space-y-4 text-sm text-slate-700">
+            <details className="group border border-slate-200 rounded-lg p-4 cursor-pointer bg-white">
+              <summary className="font-medium">How long does it take to increase SOC by 0.1%?</summary>
+              <p className="mt-2 text-slate-600">Depending on climate, soil type, and aggressive regenerative practices (e.g., no-till + cover crops + grazing), an increase of 0.1% SOC can take anywhere from 1 to 5 years.</p>
+            </details>
+            <details className="group border border-slate-200 rounded-lg p-4 cursor-pointer bg-white">
+              <summary className="font-medium">Is this suitable for generating carbon credits?</summary>
+              <p className="mt-2 text-slate-600">No. Carbon markets require rigorous baseline sampling, specific stratification, and accredited lab analysis for verification. This calculator is strictly for initial planning and scenario testing.</p>
+            </details>
+          </div>
+        </section>
+
+        <section className="text-xs text-slate-500 border-t border-slate-200 pt-6">
+          <p><strong>Disclaimer:</strong> All calculations are for informational and planning purposes only and do not replace formal scientific, regulatory, or financial accounting.</p>
+        </section>
+      </div>
     </ToolLayout>
   )
 }

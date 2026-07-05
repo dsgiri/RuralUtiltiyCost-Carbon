@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://carbon.ruralutilitycost.com/sitemap.xml
+Sitemap: https://carbon.ruralopstools.com/sitemap.xml
