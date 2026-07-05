@@ -83,6 +83,27 @@ export function Layout({ children }: LayoutProps) {
           </div>
         </div>
 
+        {/* Desktop Collapse Toggle */}
+        <div className="hidden md:flex p-3 border-b border-slate-100 shrink-0">
+          <button
+            onClick={() => setIsDesktopMenuCollapsed(!isDesktopMenuCollapsed)}
+            className={cn(
+              "flex items-center p-2 text-slate-500 hover:text-slate-900 hover:bg-slate-50 rounded-md transition-colors w-full",
+              isDesktopMenuCollapsed ? "justify-center" : "justify-start gap-2"
+            )}
+            aria-label={isDesktopMenuCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+          >
+            {isDesktopMenuCollapsed ? (
+              <ChevronRight className="h-5 w-5 shrink-0" />
+            ) : (
+              <>
+                <ChevronLeft className="h-5 w-5 shrink-0" />
+                <span className="text-sm font-medium whitespace-nowrap">Collapse</span>
+              </>
+            )}
+          </button>
+        </div>
+
         <div className="flex-1 overflow-y-auto py-4 px-3 space-y-8 no-scrollbar">
           <div>
             <h3 className={cn("px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2", isDesktopMenuCollapsed ? "md:hidden" : "block")}>Tools</h3>
@@ -148,27 +169,6 @@ export function Layout({ children }: LayoutProps) {
               ))}
             </nav>
           </div>
-        </div>
-
-        {/* Desktop Collapse Toggle */}
-        <div className="hidden md:flex p-3 border-t border-slate-200 shrink-0">
-          <button
-            onClick={() => setIsDesktopMenuCollapsed(!isDesktopMenuCollapsed)}
-            className={cn(
-              "flex items-center p-2 text-slate-500 hover:text-slate-900 hover:bg-slate-100 rounded-md transition-colors w-full",
-              isDesktopMenuCollapsed ? "justify-center" : "justify-start gap-2"
-            )}
-            aria-label={isDesktopMenuCollapsed ? "Expand sidebar" : "Collapse sidebar"}
-          >
-            {isDesktopMenuCollapsed ? (
-              <ChevronRight className="h-5 w-5 shrink-0" />
-            ) : (
-              <>
-                <ChevronLeft className="h-5 w-5 shrink-0" />
-                <span className="text-sm font-medium whitespace-nowrap">Collapse</span>
-              </>
-            )}
-          </button>
         </div>
       </div>
 
